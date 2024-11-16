@@ -1,0 +1,160 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "CRUD Node.js"
+  contact: {}
+host: "localhost:3000"
+basePath: "/"
+tags:
+- name: "Misc"
+  description: ""
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /get-mahasiswa:
+    get:
+      tags:
+      - "Misc"
+      summary: "Get Mahasiswa"
+      operationId: "GetMahasiswa"
+      produces:
+      - "application/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      x-swagger-router-controller: "Misc"
+  /get-mahasiswa-by-id:
+    get:
+      tags:
+      - "Misc"
+      summary: "Get Mahasiswa by ID"
+      operationId: "GetMahasiswabyID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "ID mahasiswa yang akan dicari"
+        required: true
+        type: "string"
+      deprecated: false
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      x-swagger-router-controller: "Misc"
+  /store-mahasiswa:
+    post:
+      tags:
+      - "Misc"
+      summary: "Store Mahasiswa"
+      operationId: "StoreMahasiswa"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/StoreMahasiswaRequest"
+      deprecated: false
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      x-swagger-router-controller: "Misc"
+  /update-mahasiswa:
+    post:
+      tags:
+      - "Misc"
+      summary: "Update Mahasiswa"
+      operationId: "UpdateMahasiswa"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateMahasiswaRequest"
+      deprecated: false
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      x-swagger-router-controller: "Misc"
+  /delete-mahasiswa:
+    post:
+      tags:
+      - "Misc"
+      summary: "Delete Mahasiswa"
+      operationId: "DeleteMahasiswa"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/DeleteMahasiswaRequest"
+      deprecated: false
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      x-swagger-router-controller: "Misc"
+securityDefinitions: {}
+definitions:
+  StoreMahasiswaRequest:
+    type: "object"
+    required:
+    - "jurusan"
+    - "name"
+    properties:
+      name:
+        type: "string"
+      jurusan:
+        type: "string"
+    title: "StoreMahasiswaRequest"
+    example:
+      name: "Candigoat"
+      jurusan: "FKKMK"
+  DeleteMahasiswaRequest:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
+    title: "DeleteMahasiswaRequest"
+    example:
+      id: "125"
+  UpdateMahasiswaRequest:
+    type: "object"
+    required:
+    - "id"
+    - "jurusan"
+    - "name"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      jurusan:
+        type: "string"
+    title: "UpdateMahasiswaRequest"
+    example:
+      id: "125"
+      name: "Apalah"
+      jurusan: "Ilkomp"
